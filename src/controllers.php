@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Fazer\TodoList;
+
 $app->get('/', function () use ($app) {
     return $app['twig']->render('index.html', array());
 })
@@ -20,4 +22,19 @@ $app->error(function (\Exception $e, $code) use ($app) {
     $page = 404 == $code ? '404.html' : '500.html';
 
     return new Response($app['twig']->render($page, array('code' => $code)), $code);
+});
+
+/** create service to make use of TodoList class */
+$app['todo_service'] = function () use ($app) {
+    $dsn = $app['parameter.driver'].':dbName='.$app['parameter.dbName'].';host='.$app['parameter.host'];
+    $pdo = new \PDO($dsn, $app['parameter.user'], $app['parameter.pass']);
+    return new TodoList($pdo);
+};
+
+/** create route to make use of TodoList class */
+$app->get('/add', function () use ($app) {
+    $todo = $app['todo_service'];
+    $output = 'test';
+
+    return $output;
 });
