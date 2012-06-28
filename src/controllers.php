@@ -26,8 +26,13 @@ $app->error(function (\Exception $e, $code) use ($app) {
 
 /** create service to make use of TodoList class */
 $app['todo_service'] = function () use ($app) {
-    $dsn = $app['parameter.driver'].':dbName='.$app['parameter.dbName'].';host='.$app['parameter.host'];
-    $pdo = new \PDO($dsn, $app['parameter.user'], $app['parameter.pass']);
+    $dsn = $app['parameter.driver'].':dbname='.$app['parameter.dbName'].';host='.$app['parameter.host'];
+    try {
+        $pdo = new \PDO($dsn, $app['parameter.user'], $app['parameter.pass']);
+    } catch (PDOException $e) {
+        // @todo try to log exception here
+    }
+    //$pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     return new TodoList($pdo);
 };
 
