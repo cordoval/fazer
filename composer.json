@@ -19,7 +19,7 @@
         "symfony/twig-bridge": "2.1.*",
         "symfony/validator": "2.1.*",
         
-        "cordoval/todolist": "dev-master#002858e6ebc40d9c8932b6ab409af4b1c9118a8e"
+        "cordoval/todolist": "dev-master"
     },
     "autoload": {
         "psr-0": { "": "src/" }
