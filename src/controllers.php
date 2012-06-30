@@ -39,7 +39,8 @@ $app['todo_service'] = function () use ($app) {
 /** create route to make use of TodoList class */
 $app->get('/add', function () use ($app) {
     $todo = $app['todo_service'];
+    $todo['my first task'] = true; // create a task "my first task"
     $output = 'test';
 
-    return $output;
+    return new Response(sprintf('%s', $output), 200);
 });

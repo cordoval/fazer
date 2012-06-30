@@ -2,7 +2,7 @@
 
 // configure your app for the production environment
 
-$app['parameter.host'] = 'localhost';
+$app['parameter.host'] = 'fazer.local';
 $app['parameter.dbName'] = 'tasks';
 $app['parameter.driver'] = 'mysql';
 $app['parameter.user'] = 'silexadmin';
