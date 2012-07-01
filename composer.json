@@ -1,5 +1,20 @@
 {
-    "name": "fabpot/silex-skeleton",
+    "name": "cordoval/fazer",
+    "description": "silex project using cordoval/todolist",
+    "keywords": [
+        "todo",
+        "silex",
+        "list"
+    ],
+    "homepage": "http://github.com/cordoval/fazer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "sfcon'2012 community project",
+            "email": "cordoval@gmail.com",
+            "homepage": "http://github.com/cordoval/fazer"
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "silex/silex": "1.0.*",
